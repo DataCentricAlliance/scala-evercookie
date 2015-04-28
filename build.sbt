@@ -25,15 +25,6 @@ libraryDependencies ++= {
 
 mainClass in assembly := Some("net.facetz.evercookie.Runner")
 
-assemblyJarName in assembly := s"${name.value}_${scalaBinaryVersion.value}-${version.value}.jar"
-
-artifact in(Compile, assembly) := {
-  val art = (artifact in(Compile, assembly)).value
-  art.copy(`classifier` = Some("assembly"))
-}
-
-addArtifact(artifact in(Compile, assembly), assembly).settings
-
 // compile task depends on scalastyle
 lazy val compileScalastyle = taskKey[Unit]("compileScalastyle")
 
