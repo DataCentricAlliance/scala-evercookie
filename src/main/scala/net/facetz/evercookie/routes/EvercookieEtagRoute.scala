@@ -9,9 +9,6 @@ import spray.routing._
  * This is a Scala Spray port of evercookie_etag.php, the server-side component
  * of Evercookie that uses the If-None-Match and Etag headers to keep track of
  * persistent values.
- *
- * @author Tolmachev Servey <gabe@codehaus.org>
- *
  */
 trait EvercookieEtagRoute extends AbstractRoute {
   val etagRoute =

@@ -8,9 +8,6 @@ import spray.routing.Route
 /**
  * This is a Scala Spray port of evercookie_cache.php, the server-side
  * component of Evercookie's cacheData mechanism.
- *
- * @author Tolmachev Servey <gabe@codehaus.org>
- *
  */
 trait EvercookieCacheRoute extends AbstractRoute {
   val cacheRoute =
