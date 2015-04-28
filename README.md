@@ -7,9 +7,9 @@ Evercookie is a Javascript API that produces extremely persistent cookies in a b
 
 This backend port original PHP scripts to Spray
 
-You need installed sbt 0.13.8 to build this project
+You need to install [sbt 0.13.8](http://www.scala-sbt.org/download.html) to build this project
 
-You can start use it by many ways:
+And now you can start to use it by many ways:
 
 * install it to your server as deb package (or even rpm, docker or windows package, [see here](http://www.scala-sbt.org/sbt-native-packager/formats/)):
     
