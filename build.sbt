@@ -17,13 +17,13 @@ libraryDependencies ++= {
   val sprayV = "1.3.3"
   Seq(
     "io.spray" %% "spray-can" % sprayV,
-    "io.spray" % "spray-routing_2.11" % sprayV,
+    "io.spray" %% "spray-routing" % sprayV,
     "com.typesafe.akka" %% "akka-actor" % akkaV,
     "commons-daemon" % "commons-daemon" % "1.0.15"
   )
 }
 
-mainClass in assembly := Some("net.facetz.evercookie.Runner")
+mainClass in(Compile, run) := Some("net.facetz.evercookie.Runner")
 
 // compile task depends on scalastyle
 lazy val compileScalastyle = taskKey[Unit]("compileScalastyle")

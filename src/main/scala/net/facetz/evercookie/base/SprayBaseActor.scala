@@ -1,6 +1,6 @@
 package net.facetz.evercookie.base
 
-import akka.actor.{Actor, ActorLogging}
+import akka.actor.{Actor, ActorContext, ActorLogging}
 import spray.http.StatusCodes
 import spray.routing._
 import spray.util.LoggingContext
@@ -24,11 +24,11 @@ with AbstractRoute {
         }
     }
 
-  def actorRefFactory = context
+  def actorRefFactory: ActorContext = context
 
   lazy val computedRoute: Route = route
 
-  def receive = {
+  def receive: Actor.Receive = {
     runRoute(computedRoute)
   }
 
