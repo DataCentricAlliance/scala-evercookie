@@ -5,6 +5,8 @@ import spray.http.HttpHeaders.RawHeader
 import spray.http.{MediaTypes, StatusCodes}
 import spray.routing._
 
+import net.facetz.evercookie.base.EvercookieBackendConfig._
+
 /**
  * This is a Scala Spray port of evercookie_etag.php, the server-side component
  * of Evercookie that uses the If-None-Match and Etag headers to keep track of

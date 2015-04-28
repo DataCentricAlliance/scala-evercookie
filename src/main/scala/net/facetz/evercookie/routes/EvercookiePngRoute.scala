@@ -5,8 +5,8 @@ import java.awt.{Color, RenderingHints}
 import java.io.ByteArrayOutputStream
 import javax.imageio.ImageIO
 
-import net.facetz.evercookie.EvercookieBackendActor
 import net.facetz.evercookie.base.AbstractRoute
+import net.facetz.evercookie.base.EvercookieBackendConfig._
 import spray.http.{MediaTypes, StatusCodes}
 import spray.routing._
 
@@ -24,7 +24,7 @@ trait EvercookiePngRoute extends AbstractRoute {
               val cookieExists = evercookieEtag.isDefined
 
               if (cookieExists) {
-                respondWithHeaders(EvercookieBackendActor.headers) {
+                respondWithHeaders(headers) {
                   val cookieValue = evercookieEtag.get.content
 
                   // Generate a PNG image from the cookie value.
