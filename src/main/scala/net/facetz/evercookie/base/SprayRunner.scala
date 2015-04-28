@@ -20,18 +20,18 @@ trait SprayRunner extends Daemon {
   implicit val system = ActorSystem(serviceName, sprayConfig.config)
   val waitTimeout = Duration(30, TimeUnit.SECONDS)
 
-  override def start() {
+  override def start(): Unit = {
     IO(Http) ! Http.Bind(baseHandler, interface = sprayConfig.host, port = sprayConfig.port)
   }
 
-  override def stop() {
+  override def stop(): Unit = {
     IO(Http) ! Http.CloseAll
     system.shutdown()
     system.awaitTermination(waitTimeout)
   }
 
-  override def init(context: DaemonContext) {}
+  override def init(context: DaemonContext): Unit = {}
 
-  override def destroy() {}
+  override def destroy(): Unit = {}
 
 }
