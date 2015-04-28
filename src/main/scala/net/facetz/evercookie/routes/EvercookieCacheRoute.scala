@@ -1,7 +1,7 @@
 package net.facetz.evercookie.routes
 
-import net.facetz.evercookie.EvercookieBackendActor
 import net.facetz.evercookie.base.AbstractRoute
+import net.facetz.evercookie.base.EvercookieBackendConfig._
 import spray.http.{MediaTypes, StatusCodes}
 import spray.routing.Route
 
@@ -19,7 +19,7 @@ trait EvercookieCacheRoute extends AbstractRoute {
 
             if (cookieExists) {
               val cookieValue = evercookieCache.get.content
-              respondWithHeaders(EvercookieBackendActor.headers) {
+              respondWithHeaders(headers) {
                 complete(StatusCodes.OK, cookieValue)
               }
             } else {
