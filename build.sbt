@@ -45,13 +45,7 @@ rpmVendor := "FACETz"
 
 packageSummary := "Evercookie Scala Spray backend"
 
-packageDescription :=
-  """
-    |Spray is a suite of scala libraries for building and consuming RESTful web services on top of Akka: lightweight, asynchronous, non-blocking, actor-based, testable
-    |Evercookie is a Javascript API that produces extremely persistent cookies in a browser. It is written in JavaScript and additionally uses a SWF (Flash) object for the Local Shared Objects and, originally, PHPs for the server-side generation of cached PNGs and ETags.
-    |
-    |This backend port original PHP scripts to Spray
-  """.stripMargin
+packageDescription := "Evercookie Scala Spray backend"
 
 resourceDirectory in Compile := sourceDirectory.value / "deb" / "conf"
 
