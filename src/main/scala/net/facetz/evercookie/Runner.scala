@@ -7,6 +7,12 @@ object Runner extends App {
   val runner = new Runner
   runner.init(null)
   runner.start()
+  Runtime.getRuntime.addShutdownHook(new Thread(new Runnable {
+    override def run(): Unit = {
+      runner.stop()
+      runner.destroy()
+    }
+  }))
 }
 
 class Runner extends SprayRunner {

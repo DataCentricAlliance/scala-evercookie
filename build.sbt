@@ -39,7 +39,7 @@ import com.typesafe.sbt.packager.archetypes.ServerLoader.SystemV
 // use systemV for apply the script from /etc/default
 serverLoading in Debian := SystemV
 
-maintainer := "Sergey Tolmachev <tolsi.ru@gmail.com>"
+maintainer := "Sergey Tolmachev <s.tolmachev@datacentric.ru>"
 
 rpmVendor := "FACETz"
 
@@ -47,12 +47,10 @@ packageSummary := "Evercookie Scala Spray backend"
 
 packageDescription := "Evercookie Scala Spray backend"
 
-resourceDirectory in Compile := sourceDirectory.value / "deb" / "conf"
-
 mappings in Universal <+= (packageBin in Compile, sourceDirectory ) map { (_, src) =>
   // we are using the reference.conf as default application.conf
   // the user can override settings here
-  val conf = src  / "deb" / "conf" / "reference.conf"
+  val conf = src  / "main" / "resources" / "reference.conf"
   conf -> "conf/application.conf"
 }
 

@@ -17,9 +17,7 @@ with AbstractRoute {
       case e: Exception =>
         requestUri {
           uri =>
-            if (log.isDebugEnabled) {
-              log.error(e, s"Request to $uri could not be handled normally")
-            }
+            log.error(e, s"Request to $uri could not be handled normally")
             complete(StatusCodes.InternalServerError, "Error processing request")
         }
     }
