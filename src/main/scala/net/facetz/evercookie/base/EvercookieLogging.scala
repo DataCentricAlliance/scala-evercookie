@@ -1,6 +1,5 @@
 package net.facetz.evercookie.base
 
-import net.facetz.evercookie.base.EvercookieBackendConfig._
 import org.slf4j.LoggerFactory
 
 trait EvercookieLogging {
@@ -8,7 +7,7 @@ trait EvercookieLogging {
 
   def debugLogRequest(path: String, cookieName: String, cookieExists: Boolean) = {
     if (log.isDebugEnabled) {
-      log.debug(s"Request to '/$cacheRoutePath': Cookie with name '$cacheCookieName' exists = $cookieExists")
+      log.debug(s"Request to '/$path': Cookie with name '$cookieName' exists = $cookieExists")
     }
   }
 
