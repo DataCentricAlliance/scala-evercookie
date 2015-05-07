@@ -12,7 +12,8 @@ import net.facetz.evercookie.base.EvercookieBackendConfig._
  * of Evercookie that uses the If-None-Match and Etag headers to keep track of
  * persistent values.
  */
-trait EvercookieEtagRoute extends AbstractRoute with EvercookieLogging {
+trait EvercookieEtagRoute extends AbstractRoute {
+  this: EvercookieLogging =>
   val etagRoute =
     path(etagRoutePath) {
       get {

@@ -1,15 +1,17 @@
 package net.facetz.evercookie.routes
 
-import net.facetz.evercookie.base.{EvercookieLogging, AbstractRoute}
 import net.facetz.evercookie.base.EvercookieBackendConfig._
+import net.facetz.evercookie.base.{AbstractRoute, EvercookieLogging}
 import spray.http.{MediaTypes, StatusCodes}
 import spray.routing.Route
+import spray.routing.directives.DebuggingDirectives
 
 /**
  * This is a Scala Spray port of evercookie_cache.php, the server-side
  * component of Evercookie's cacheData mechanism.
  */
-trait EvercookieCacheRoute extends AbstractRoute with EvercookieLogging {
+trait EvercookieCacheRoute extends AbstractRoute {
+  this: EvercookieLogging =>
   val cacheRoute =
     path(cacheRoutePath) {
       get {

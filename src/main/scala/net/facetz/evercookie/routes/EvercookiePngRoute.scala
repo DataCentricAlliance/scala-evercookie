@@ -14,7 +14,8 @@ import spray.routing._
  * This is a Scala Spray port of evercookie_png.php, the server-side component
  * of Evercookie that stores values in force-cached PNG image data.
  */
-trait EvercookiePngRoute extends AbstractRoute with EvercookieLogging {
+trait EvercookiePngRoute extends AbstractRoute {
+  this: EvercookieLogging =>
   val pngRoute =
     path(pngRoutePath) {
       get {
