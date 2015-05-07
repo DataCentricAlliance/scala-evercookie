@@ -12,7 +12,7 @@ object Runner extends App {
   runner.start()
   Runtime.getRuntime.addShutdownHook(new Thread(new Runnable {
     override def run(): Unit = {
-      log.info("Shutdown hook was received, stopping")
+      log.info("Shutdown hook was received")
       runner.stop()
       runner.destroy()
     }
@@ -35,8 +35,9 @@ class Runner extends SprayRunner {
   }
 
   override def stop(): Unit = {
-    log.debug("stop")
+    log.info("Stopping")
     super.stop()
+    log.info("Stopped")
   }
 
   override def init(context: DaemonContext): Unit = {
