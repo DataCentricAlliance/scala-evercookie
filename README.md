@@ -29,3 +29,6 @@ And now you can start to use it by many ways:
 * Run it using [JSVC](http://commons.apache.org/proper/commons-daemon/jsvc.html):
      
      `net.facetz.evercookie.Runner` class implements also `org.apache.commons.daemon.Daemon`. Run it as you want!
+     
+ Before run service you need create log directory by yourself `mkdir /var/log/scala-evercookie/` 
+ and give all rights: `chmod 777 /var/log/scala-evercookie/` 

@@ -5,7 +5,7 @@ import java.awt.{Color, RenderingHints}
 import java.io.ByteArrayOutputStream
 import javax.imageio.ImageIO
 
-import net.facetz.evercookie.base.AbstractRoute
+import net.facetz.evercookie.base.{EvercookieLogging, AbstractRoute}
 import net.facetz.evercookie.base.EvercookieBackendConfig._
 import spray.http.{MediaTypes, StatusCodes}
 import spray.routing._
@@ -14,7 +14,7 @@ import spray.routing._
  * This is a Scala Spray port of evercookie_png.php, the server-side component
  * of Evercookie that stores values in force-cached PNG image data.
  */
-trait EvercookiePngRoute extends AbstractRoute {
+trait EvercookiePngRoute extends AbstractRoute with EvercookieLogging {
   val pngRoute =
     path(pngRoutePath) {
       get {
@@ -22,6 +22,8 @@ trait EvercookiePngRoute extends AbstractRoute {
           optionalHeaderValueByName(ifNoneMatchHeader) { ifNoneMatchHeader =>
             optionalCookie(pngCookieName) { evercookieEtag =>
               val cookieExists = evercookieEtag.isDefined
+
+              debugLogRequest(pngRoutePath, pngCookieName, cookieExists)
 
               if (cookieExists) {
                 respondWithHeaders(headers) {

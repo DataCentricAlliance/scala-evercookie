@@ -1,6 +1,6 @@
 package net.facetz.evercookie.routes
 
-import net.facetz.evercookie.base.AbstractRoute
+import net.facetz.evercookie.base.{EvercookieLogging, AbstractRoute}
 import spray.http.HttpHeaders.RawHeader
 import spray.http.{MediaTypes, StatusCodes}
 import spray.routing._
@@ -12,7 +12,7 @@ import net.facetz.evercookie.base.EvercookieBackendConfig._
  * of Evercookie that uses the If-None-Match and Etag headers to keep track of
  * persistent values.
  */
-trait EvercookieEtagRoute extends AbstractRoute {
+trait EvercookieEtagRoute extends AbstractRoute with EvercookieLogging {
   val etagRoute =
     path(etagRoutePath) {
       get {
@@ -20,6 +20,8 @@ trait EvercookieEtagRoute extends AbstractRoute {
           optionalHeaderValueByName(ifNoneMatchHeader) { ifNoneMatchHeader =>
             optionalCookie(etagCookieName) { evercookieEtag =>
               val cookieExists = evercookieEtag.isDefined
+
+              debugLogRequest(etagRoutePath, etagCookieName, cookieExists)
 
               if (cookieExists) {
                 val cookieValue = evercookieEtag.get.content

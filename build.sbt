@@ -16,11 +16,19 @@ libraryDependencies ++= {
   val akkaV = "2.3.10"
   val sprayV = "1.3.3"
   val commonsDaemonV = "1.0.15"
+  val akkaSlf4jV = "2.3.10"
+  val slf4jV = "1.7.12"
+  val log4jV = "1.2.17"
   Seq(
     "io.spray" %% "spray-can" % sprayV,
     "io.spray" %% "spray-routing" % sprayV,
     "com.typesafe.akka" %% "akka-actor" % akkaV,
-    "commons-daemon" % "commons-daemon" % commonsDaemonV
+    "commons-daemon" % "commons-daemon" % commonsDaemonV,
+    "org.slf4j" % "slf4j-api" % slf4jV,
+    "org.slf4j" % "slf4j-log4j12" % slf4jV,
+    "com.typesafe.akka" % "akka-slf4j_2.11" % akkaSlf4jV,
+    "log4j" % "log4j" % log4jV,
+    "log4j" % "apache-log4j-extras" % log4jV
   )
 }
 
@@ -52,6 +60,11 @@ mappings in Universal <+= (packageBin in Compile, sourceDirectory ) map { (_, sr
   // the user can override settings here
   val conf = src  / "main" / "resources" / "reference.conf"
   conf -> "conf/application.conf"
+}
+
+mappings in Universal <+= (packageBin in Compile, sourceDirectory) map { (_, src) =>
+  val log4j = src / "main" / "resources" / "log4j.properties"
+  log4j -> "conf/log4j.properties"
 }
 
 // sbt-assembly to build runnable jar

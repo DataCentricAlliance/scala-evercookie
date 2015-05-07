@@ -15,4 +15,4 @@
 # -------------------------------------------------
 
 # Referencing a custom config file
-JAVA_OPTS="-Dconfig.file=${{chdir}}/conf/application.conf"
+JAVA_OPTS="-Dconfig.file=${{chdir}}/conf/application.conf -Dlog4j.configuration=file:${{chdir}}/conf/log4j.properties"
